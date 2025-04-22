@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 23, 23, 23;
+  --background-rgb: 249, 250, 251;
+  --primary-rgb: 79, 70, 229;
+  --secondary-rgb: 99, 102, 241;
+  --accent-rgb: 167, 139, 250;
+  --success-rgb: 16, 185, 129;
+  --warning-rgb: 247, 144, 9;
+  --danger-rgb: 239, 68, 68;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 229, 229, 229;
+    --background-rgb: 17, 24, 39;
+    --primary-rgb: 99, 102, 241;
+    --secondary-rgb: 129, 140, 248;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+  min-height: 100vh;
+  font-feature-settings: 'rlig' 1, 'calt' 1;
+}
+
+/* Özel bileşen sınıfları */
+@layer components {
+  .btn-primary {
+    @apply bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg transition-all duration-200 ease-in-out transform hover:scale-[1.02] active:scale-95;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium py-2 px-4 rounded-lg transition-all duration-200 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-100;
+  }
+  
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-700 transition-all hover:shadow-md;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500 transition-all;
+  }
+  
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .badge-primary {
+    @apply bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-100;
+  }
+  
+  .badge-success {
+    @apply bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100;
+  }
+}
+
+/* Özel animasyonlar */
+@layer utilities {
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Scrollbar stillendirme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--background-rgb));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--primary-rgb));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--secondary-rgb));
+}
+
+/* Tipografi iyileştirmeleri */
+h1, h2, h3, h4, h5, h6 {
+  @apply font-bold text-gray-900 dark:text-white;
+}
+
+h1 {
+  @apply text-3xl sm:text-4xl;
+}
+
+h2 {
+  @apply text-2xl sm:text-3xl;
+}
+
+h3 {
+  @apply text-xl sm:text-2xl;
+}
+
+p {
+  @apply text-gray-600 dark:text-gray-300 leading-relaxed;
+}
+
+/* Form elemanları */
+input, textarea, select {
+  @apply input-field;
+}
+
+/* Linkler */
+a {
+  @apply text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-300 transition-colors;
+}
